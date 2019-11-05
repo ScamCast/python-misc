@@ -23,18 +23,18 @@ test = {
    ]
 }
 
-def traverseDict(d, depth):
+def dictrecursion(d, depth):
     if depth == 0:
         return []
     else:
         data = []
         for i in d.keys():
             if isinstance(d[i], dict):
-                data += traverseDict(d[i], depth -1)
+                data += dictrecursion(d[i], depth -1)
             elif isinstance(d[i], list):
                 for li in d[i]:
                     if isinstance(li, dict):
-                        data += traverseDict(li, depth-1)
+                        data += dictrecursion(li, depth-1)
                     else:
                         data.append((f'List Item', li))
             else:
@@ -42,7 +42,7 @@ def traverseDict(d, depth):
         return data
 
 
-pp(traverseDict(test, 10))
+pp(dictrecursion(test, 10))
 
 #### OUTPUT ####
 """
