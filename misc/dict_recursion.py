@@ -18,7 +18,7 @@ def traverseDict(d, depth, keys_=[]):
                         if isinstance(li, dict):
                             data += traverseDict(li, depth-1, keys)
                         else:
-                            data.append((f'List Item {keys}', li))
+                            data.append([[list]+keys, li])
                 else:
                     keys = keys_ + [i]
                     data.append((keys, d[i]))
@@ -58,7 +58,8 @@ A = {
 }
 
 print('\n\n'+'#'*20+' TEST_1 '+'#'*20)
-pp(traverseDict(A, 20), width=100)
+pp(traverseDict(A, 40), width=100 )
+
 
 # OUTPUT #
 """
